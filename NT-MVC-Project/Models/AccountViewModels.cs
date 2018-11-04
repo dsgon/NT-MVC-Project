@@ -65,12 +65,35 @@ namespace NT_MVC_Project.Models
     public class RegisterViewModel
     {
         [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Nombre")]
+        public string Name { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Apellido")]
+        public string Lastname { get; set; }
+
+        [Required]
+        [DataType(DataType.Text)]
+        [Display(Name = "Provincia")]
+        public string Province { get; set; }
+
+        [Required]
         [EmailAddress]
         [Display(Name = "Correo electrónico")]
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
+        [Phone]
+        [DataType(DataType.PhoneNumber)]
+        [Display(Name = "Numero de Telefono")]
+        [DisplayFormat(DataFormatString = "0:##-####-####")]
+        [MaxLength(12)]
+        public string PhoneNumber { get; set; }
+
+        [Required]
+        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 2)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
@@ -79,6 +102,13 @@ namespace NT_MVC_Project.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
+
+        //[Display(Name = "Terminos y Condiciones")]
+        //[Range(typeof(bool), "true", "true", ErrorMessage = "Debe seleccionar los Terminos de Uso")]
+        //public bool TermsAndConditions { get; set; }
+
+
     }
 
     public class ResetPasswordViewModel
@@ -89,7 +119,7 @@ namespace NT_MVC_Project.Models
         public string Email { get; set; }
 
         [Required]
-        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 6)]
+        [StringLength(100, ErrorMessage = "El número de caracteres de {0} debe ser al menos {2}.", MinimumLength = 2)]
         [DataType(DataType.Password)]
         [Display(Name = "Contraseña")]
         public string Password { get; set; }
@@ -98,6 +128,7 @@ namespace NT_MVC_Project.Models
         [Display(Name = "Confirmar contraseña")]
         [Compare("Password", ErrorMessage = "La contraseña y la contraseña de confirmación no coinciden.")]
         public string ConfirmPassword { get; set; }
+
 
         public string Code { get; set; }
     }

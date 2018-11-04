@@ -7,8 +7,11 @@ using Microsoft.AspNet.Identity.EntityFramework;
 namespace NT_MVC_Project.Models
 {
     // Para agregar datos de perfil del usuario, agregue más propiedades a su clase ApplicationUser. Visite https://go.microsoft.com/fwlink/?LinkID=317594 para obtener más información.
-    public class ApplicationUser : IdentityUser
-    {
+    public class ApplicationUser : IdentityUser {
+        public string  name { get; set; }
+        public string lastName { get; set; }
+        public string province { get; set; }
+
         public async Task<ClaimsIdentity> GenerateUserIdentityAsync(UserManager<ApplicationUser> manager)
         {
             // Tenga en cuenta que el valor de authenticationType debe coincidir con el definido en CookieAuthenticationOptions.AuthenticationType
